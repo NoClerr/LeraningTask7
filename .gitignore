@@ -1,0 +1,67 @@
+# Gradle
+.gradle/
+build/
+.gradle-build/
+.gradle-cache/
+.gradle-user-home/
+gradle.properties
+gradle/wrapper/*.jar.bak
+gradle/wrapper/*.zip
+*.log
+*.tmp
+
+# Gradle Wrapper (не игнорируем необходимые файлы)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!gradlew
+!gradlew.bat
+
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+.idea
+.idea/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+# Ignore Gradle build output directory
+build
+
+# logs
+*.log
+*.log.*
+*.tmp
+*.bak
+*.swp
+*~
