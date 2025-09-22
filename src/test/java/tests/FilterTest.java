@@ -28,7 +28,7 @@ public class FilterTest {
                 .setMovie("Титаник");
 
         String actualFilm = reviewPage.getFilmName();
-        Allure.step("Проверка что жанр фильма соответствует выбранному", () -> {
+        Allure.step("Проверка что название фильма соответствует выбранному", () -> {
             assertThat(actualFilm).contains("Титаник");
         });
 
