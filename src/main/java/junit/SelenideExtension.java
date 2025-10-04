@@ -15,7 +15,6 @@ public class SelenideExtension implements BeforeAllCallback, AfterEachCallback {
         Configuration.headless = false;
         Configuration.baseUrl = "https://cinescope.t-qa.ru";
         Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "normal";
         Configuration.pageLoadTimeout = 10000;
     }
 

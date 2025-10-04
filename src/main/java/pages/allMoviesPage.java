@@ -5,11 +5,10 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class FilterPage {
+public class allMoviesPage {
 
     private SelenideElement moviesLocationFilter = $x("//button[.//span[@data-qa-id='movies_filter_location_select']]");
     private SelenideElement genreFilter = $x("(//div[@class='w-36'])[2]//button");
@@ -18,46 +17,46 @@ public class FilterPage {
     private SelenideElement filterPage = $(byText("Все фильмы"));
 
     @Step("Открыть главную страницу")
-    public FilterPage open() {
-        Selenide.open("https://cinescope.t-qa.ru/movies?page=1");
+    public allMoviesPage open() {
+        Selenide.open("/movies?page=1");
         return this;
     }
 
     @Step("Выбор города")
-    public FilterPage setMoviesLocation (String city){
+    public allMoviesPage setMoviesLocation (String city){
         moviesLocationFilter.click();
         $(byText(city)).click();;
         return this;
     }
 
     @Step("Выбор Жанра")
-    public FilterPage setGenre (String genre){
+    public allMoviesPage setGenre (String genre){
         genreFilter.click();
         $$("div[role='option'] span").findBy(text(genre)).click();
         return this;
     }
     @Step("Выбор фильтра")
-    public FilterPage setmoviesFilter (String filter){
+    public allMoviesPage setmoviesFilter (String filter){
         moviesFilter.click();
         $(byText(filter)).click();
         return this;
     }
 
     @Step("Выбор фильма")
-    public FilterPage setMovie (String movieName){
+    public allMoviesPage openMoviePage (String movieName){
         $x("//h3[text()='" + movieName + "']").click();
-        return this;
+        return new allMoviesPage();
     }
 
-    @Step("Переход на страницу входа")
-    public LoginPage goToLogin() {
-        loginPage.click();
-        return new LoginPage();
-    }
+ //   @Step("Переход на страницу входа")
+  //  public LoginPage goToLogin() {
+   //     loginPage.click();
+  //      return new LoginPage();
+   // }
 
-    @Step("Переход на страницу c фильтрами")
-    public FilterPage FilFiletPage () {
-        filterPage.click();
-        return this;
-    }
+  //  @Step("Переход на страницу c фильтрами")
+  //  public allMoviesPage FilFiletPage () {
+  //      filterPage.click();
+  //      return this;
+  //  }
 }

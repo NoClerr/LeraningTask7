@@ -5,9 +5,10 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import junit.UITest;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.FilterPage;
-import pages.ReviewPage;
+import pages.allMoviesPage;
+import pages.moviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,21 +19,22 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ReviewPublicationTest {
 
-    private static final FilterPage filterPage = new FilterPage();
-    private static final ReviewPage reviewPage = new ReviewPage();
+    private static final allMoviesPage filterPage = new allMoviesPage();
+    private static final moviePage reviewPage = new moviePage();
 
     @Test
-    public void ReviewPublicationTest() {
+    @DisplayName("Публикация отзыва")
+    public void reviewPublicationTest() {
         String textReview = "Отзыв на фильм";
         String rating = "4";
 
-            filterPage.setMovie("Титаник");
+            filterPage.openMoviePage("Титаник");
             reviewPage.textReview(textReview);
-            reviewPage.selectRating("4");
+            reviewPage.selectRating(rating);
             reviewPage.submitReview();
 
 
-            String reviewText = reviewPage.getReviewText();
+            String reviewText = reviewPage.getNewReviewText(textReview);
             Allure.step("Проверка текста отзыва", () -> {
                 assertThat(reviewText).isEqualTo(textReview);
             });

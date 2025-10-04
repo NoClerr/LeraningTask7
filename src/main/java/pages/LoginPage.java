@@ -6,7 +6,6 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
-import static java.nio.channels.Selector.open;
 
 public class LoginPage {
 
@@ -15,7 +14,7 @@ public class LoginPage {
     private final SelenideElement loginButton = $("[data-qa-id='login_submit_button']");
 
     @Step("Открываем страницу авторизации")
-    public LoginPage OpenAuthPage() {
+    public LoginPage open() {
         Selenide.open("/login");;
         return this;
     }
@@ -32,8 +31,8 @@ public class LoginPage {
     }
 
     @Step("Кликаем по кнопке вход")
-    public LoginPage clickLogin() {
+    public allMoviesPage clickLogin() {
         loginButton.shouldBe(visible).click();
-        return this;
+        return new allMoviesPage();
     }
 }

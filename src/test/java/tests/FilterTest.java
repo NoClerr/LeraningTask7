@@ -4,9 +4,11 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import junit.UITest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.FilterPage;
-import pages.ReviewPage;
+import pages.LoginPage;
+import pages.allMoviesPage;
+import pages.moviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -15,17 +17,23 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @Feature("Все фильтры фильмов на главной странице")
 public class FilterTest {
 
-    private static final FilterPage filterPage = new FilterPage();
-    private static final ReviewPage reviewPage = new ReviewPage();
+    private static final allMoviesPage filterPage = new allMoviesPage();
+    private static final moviePage reviewPage = new moviePage();
+    private static final LoginPage loginPage = new LoginPage();
 
     @Test
-
+    @DisplayName("Фильтры на странице с фильмами")
     public void FiltersTest() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         filterPage.open()
-               .setMoviesLocation("MSK")
+                .setMoviesLocation("MSK")
                 .setGenre("Драма")
                 .setmoviesFilter("Старые")
-                .setMovie("Титаник");
+                .openMoviePage("Титаник");
 
         String actualFilm = reviewPage.getFilmName();
         Allure.step("Проверка что название фильма соответствует выбранному", () -> {

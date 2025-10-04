@@ -1,15 +1,15 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.selector.ByText;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class ReviewPage { ;
+public class moviePage { ;
     private SelenideElement buyTicket = $(byText("Купить билет"));
     private SelenideElement reviewTextarea = $("[data-qa-id='movie_review_input']");
     private SelenideElement ratingButton = $("button[dir='ltr']");
@@ -22,32 +22,34 @@ public class ReviewPage { ;
     private SelenideElement genreFilm = $("p[class$='mt-5']");
 
     @Step("покупка билета")
-    public ReviewPage buttonBuyTicket () {
+    public moviePage buttonBuyTicket () {
         buyTicket.click();
         return this;
     }
     @Step("текст отзыва")
-    public ReviewPage textReview (String ReviewText) {
+    public moviePage textReview (String ReviewText) {
         reviewTextarea.setValue(ReviewText);
         return this;
     }
     @Step("Выбор рейтинга")
-    public ReviewPage selectRating(String rating) {
+    public moviePage selectRating(String rating) {
         ratingButton.scrollTo().click();
         $x("//*[text() = '" + rating + "']/parent::*[@role]").click();
         return this;
     }
     @Step("отправка отзыва")
-    public ReviewPage submitReview() {
+    public moviePage submitReview() {
         submitReviewButton.click();
         return this;
     }
     @Step("получаем текст отзыва")
-    public String getReviewText() {
+    public String getNewReviewText(String NewReview) {
+        reviewText.shouldBe(visible)
+                .shouldHave(text(NewReview));
         return reviewText.getText();
     }
     @Step("удаление отзыва через меню")
-    public ReviewPage deleteReview() {
+    public moviePage deleteReview() {
     reviewMenuButton.click();
         deleteReview.click();
     return this;
