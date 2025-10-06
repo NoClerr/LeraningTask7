@@ -7,9 +7,9 @@ import io.qameta.allure.Feature;
 import junit.UITest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pages.TicketPage;
 import pages.allMoviesPage;
 import pages.moviePage;
-import pages.TicketPage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
