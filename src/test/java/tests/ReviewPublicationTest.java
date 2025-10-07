@@ -7,7 +7,7 @@ import junit.UITest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.allMoviesPage;
+import pages.AllMoviesPage;
 import pages.moviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ReviewPublicationTest {
 
-    private static final allMoviesPage filterPage = new allMoviesPage();
+    private static final AllMoviesPage filterPage = new AllMoviesPage();
     private static final moviePage reviewPage = new moviePage();
 
     @Test
@@ -34,9 +34,9 @@ public class ReviewPublicationTest {
             reviewPage.submitReview();
 
 
-            String reviewText = reviewPage.getNewReviewText(textReview);
+            String actualTextReview = reviewPage.getNewReviewText(textReview);
             Allure.step("Проверка текста отзыва", () -> {
-                assertThat(reviewText).isEqualTo(textReview);
+                assertThat(actualTextReview).isEqualTo(textReview);
             });
 
         }

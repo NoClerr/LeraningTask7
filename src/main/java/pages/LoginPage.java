@@ -12,10 +12,12 @@ public class LoginPage {
     private final SelenideElement usernameField = $("[data-qa-id='login_email_input']");
     private final SelenideElement passwordField = $("[data-qa-id='login_password_input']");
     private final SelenideElement loginButton = $("[data-qa-id='login_submit_button']");
+    private final SelenideElement loginPageButton = $("[data-qa-id='login_page_button']");
 
     @Step("Открываем страницу авторизации")
     public LoginPage open() {
-        Selenide.open("/login");;
+        Selenide.open("/");
+        loginPageButton.click();
         return this;
     }
     @Step("Заполняем поле email")
@@ -31,8 +33,8 @@ public class LoginPage {
     }
 
     @Step("Кликаем по кнопке вход")
-    public allMoviesPage clickLogin() {
+    public AllMoviesPage clickLogin() {
         loginButton.shouldBe(visible).click();
-        return new allMoviesPage();
+        return new AllMoviesPage();
     }
 }

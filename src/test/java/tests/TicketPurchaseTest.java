@@ -8,7 +8,7 @@ import junit.UITest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.TicketPage;
-import pages.allMoviesPage;
+import pages.AllMoviesPage;
 import pages.moviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -19,7 +19,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TicketPurchaseTest {
 
-    private static final allMoviesPage filterPage = new allMoviesPage();
+    private static final AllMoviesPage filterPage = new AllMoviesPage();
     private static final moviePage reviewPage = new moviePage();
     private static final TicketPage ticketPage = new TicketPage();
 

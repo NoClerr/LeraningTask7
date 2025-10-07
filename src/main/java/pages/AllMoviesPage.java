@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class allMoviesPage {
+public class AllMoviesPage {
 
     private SelenideElement moviesLocationFilter = $x("//button[.//span[@data-qa-id='movies_filter_location_select']]");
     private SelenideElement genreFilter = $x("(//div[@class='w-36'])[2]//button");
@@ -17,35 +17,35 @@ public class allMoviesPage {
     private SelenideElement filterPage = $(byText("Все фильмы"));
 
     @Step("Открыть главную страницу")
-    public allMoviesPage open() {
+    public AllMoviesPage open() {
         Selenide.open("/movies?page=1");
         return this;
     }
 
     @Step("Выбор города")
-    public allMoviesPage setMoviesLocation (String city){
+    public AllMoviesPage setMoviesLocation (String city){
         moviesLocationFilter.click();
         $(byText(city)).click();;
         return this;
     }
 
     @Step("Выбор Жанра")
-    public allMoviesPage setGenre (String genre){
+    public AllMoviesPage setGenre (String genre){
         genreFilter.click();
         $$("div[role='option'] span").findBy(text(genre)).click();
         return this;
     }
     @Step("Выбор фильтра")
-    public allMoviesPage setmoviesFilter (String filter){
+    public AllMoviesPage setmoviesFilter (String filter){
         moviesFilter.click();
         $(byText(filter)).click();
         return this;
     }
 
     @Step("Выбор фильма")
-    public allMoviesPage openMoviePage (String movieName){
+    public AllMoviesPage openMoviePage (String movieName){
         $x("//h3[text()='" + movieName + "']").click();
-        return new allMoviesPage();
+        return new AllMoviesPage();
     }
 
  //   @Step("Переход на страницу входа")

@@ -7,7 +7,7 @@ import junit.UITest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
-import pages.allMoviesPage;
+import pages.AllMoviesPage;
 import pages.moviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -17,18 +17,13 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @Feature("Все фильтры фильмов на главной странице")
 public class FilterTest {
 
-    private static final allMoviesPage filterPage = new allMoviesPage();
+    private static final AllMoviesPage filterPage = new AllMoviesPage();
     private static final moviePage reviewPage = new moviePage();
     private static final LoginPage loginPage = new LoginPage();
 
     @Test
     @DisplayName("Фильтры на странице с фильмами")
     public void FiltersTest() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         filterPage.open()
                 .setMoviesLocation("MSK")
                 .setGenre("Драма")
