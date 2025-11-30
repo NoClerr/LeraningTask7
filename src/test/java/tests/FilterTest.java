@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 import pages.AllMoviesPage;
-import pages.moviePage;
+import pages.MoviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,8 +18,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class FilterTest {
 
     private static final AllMoviesPage filterPage = new AllMoviesPage();
-    private static final moviePage reviewPage = new moviePage();
-    private static final LoginPage loginPage = new LoginPage();
+    private static final MoviePage reviewPage = new MoviePage();
 
     @Test
     @DisplayName("Фильтры на странице с фильмами")
@@ -27,7 +26,7 @@ public class FilterTest {
         filterPage.open()
                 .setMoviesLocation("MSK")
                 .setGenre("Драма")
-                .setmoviesFilter("Старые")
+                .setMoviesFilter("Старые")
                 .openMoviePage("Титаник");
 
         String actualFilm = reviewPage.getFilmName();

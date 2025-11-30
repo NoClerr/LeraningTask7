@@ -37,4 +37,11 @@ public class LoginPage {
         loginButton.shouldBe(visible).click();
         return new AllMoviesPage();
     }
+    public LoginPage loginAs(String email, String password) {
+        open();
+        setUsername(email);
+        setPassword(password);
+        clickLogin();
+        return this;
+    }
 }

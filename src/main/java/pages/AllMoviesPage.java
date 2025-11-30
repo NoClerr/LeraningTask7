@@ -36,7 +36,7 @@ public class AllMoviesPage {
         return this;
     }
     @Step("Выбор фильтра")
-    public AllMoviesPage setmoviesFilter (String filter){
+    public AllMoviesPage setMoviesFilter(String filter){
         moviesFilter.click();
         $(byText(filter)).click();
         return this;
@@ -47,16 +47,4 @@ public class AllMoviesPage {
         $x("//h3[text()='" + movieName + "']").click();
         return new AllMoviesPage();
     }
-
- //   @Step("Переход на страницу входа")
-  //  public LoginPage goToLogin() {
-   //     loginPage.click();
-  //      return new LoginPage();
-   // }
-
-  //  @Step("Переход на страницу c фильтрами")
-  //  public allMoviesPage FilFiletPage () {
-  //      filterPage.click();
-  //      return this;
-  //  }
 }

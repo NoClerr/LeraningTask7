@@ -25,19 +25,19 @@ public class TicketPage {
     }
 
     @Step("Заполняем поле номер карты")
-    public TicketPage setNumber (String number) {
+    public TicketPage setCardNumber(String number) {
         cardNumber.setValue(number);
         return this;
     }
 
     @Step("Заполняем поле имя держателя карты")
-    public TicketPage setName (String name) {
+    public TicketPage setCardName(String name) {
         cardName.setValue(name);
         return this;
     }
 
     @Step("Заполняем поле месяц карты")
-    public TicketPage selectMonth (String month) {
+    public TicketPage setCardMonth(String month) {
         cardMonth.click();
         $$("div[role='option'] span")
                 .findBy(text(month))
@@ -47,7 +47,7 @@ public class TicketPage {
     }
 
     @Step("Заполняем поле год карты")
-    public TicketPage selectYear (String year) {
+    public TicketPage setCardYear(String year) {
         cardYear.click();
         $x("//div[@role='listbox']//div[@role='option']//span[text()='" + year + "']")
                 .click();
@@ -55,7 +55,7 @@ public class TicketPage {
     }
 
     @Step("Заполняем поле CVV карты")
-    public TicketPage setCVV (String cvv) {
+    public TicketPage setCardCVV(String cvv) {
         cardCVV.setValue(cvv);
         return this;
     }
