@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 
 public class ConfigProvider {
 
-    private static final ResourceBundle config = ResourceBundle.getBundle("config");
+    private static final ResourceBundle config = ResourceBundle.getBundle("authconfig");
 
     public static String getUsername() {
         return config.getString("user.username");
@@ -13,7 +13,7 @@ public class ConfigProvider {
         return config.getString("user.password");
     }
     public static String getBaseUrl() {
-        return config.getString("user.url");
+        return config.getString("base.url");
     }
     public static String getBrowser() {
         return config.getString("browser");

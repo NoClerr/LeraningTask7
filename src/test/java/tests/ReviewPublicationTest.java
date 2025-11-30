@@ -28,7 +28,7 @@ public class ReviewPublicationTest {
         String textReview = "Отзыв на фильм";
         String rating = "4";
 
-            filterPage.openMoviePage("Титаник");
+            filterPage.openMoviePage("Механик");
             reviewPage.setTextReview(textReview);
             reviewPage.setMovieRating(rating);
             reviewPage.submitReview();
@@ -43,7 +43,7 @@ public class ReviewPublicationTest {
     @AfterEach
     public void deleteReview(){
         reviewPage.deleteReview();
+
         }
     }
-
 
