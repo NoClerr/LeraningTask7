@@ -8,7 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.AllMoviesPage;
-import pages.moviePage;
+import pages.MoviePage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -20,7 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class ReviewPublicationTest {
 
     private static final AllMoviesPage filterPage = new AllMoviesPage();
-    private static final moviePage reviewPage = new moviePage();
+    private static final MoviePage reviewPage = new MoviePage();
 
     @Test
     @DisplayName("Публикация отзыва")
@@ -29,8 +29,8 @@ public class ReviewPublicationTest {
         String rating = "4";
 
             filterPage.openMoviePage("Титаник");
-            reviewPage.textReview(textReview);
-            reviewPage.selectRating(rating);
+            reviewPage.setTextReview(textReview);
+            reviewPage.setMovieRating(rating);
             reviewPage.submitReview();
 
 
