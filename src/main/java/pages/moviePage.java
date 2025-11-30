@@ -1,0 +1,70 @@
+package pages;
+
+import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
+
+public class moviePage { ;
+    private SelenideElement buyTicket = $(byText("Купить билет"));
+    private SelenideElement reviewTextarea = $("[data-qa-id='movie_review_input']");
+    private SelenideElement ratingButton = $("button[dir='ltr']");
+    private SelenideElement selectRating = $("[role='option']");
+    private SelenideElement submitReviewButton = $("[data-qa-id='movie_review_submit_button']");
+    private SelenideElement reviewText = $(".whitespace-pre-line");
+    private SelenideElement reviewMenuButton = $("[data-qa-id='movie_review_actions_button']");
+    private SelenideElement deleteReview = $("div[data-qa-id*='delete']");
+    private SelenideElement nameFilm = $("h2.text-6xl");
+    private SelenideElement genreFilm = $("p[class$='mt-5']");
+
+    @Step("покупка билета")
+    public moviePage buttonBuyTicket () {
+        buyTicket.click();
+        return this;
+    }
+    @Step("текст отзыва")
+    public moviePage textReview (String ReviewText) {
+        reviewTextarea.setValue(ReviewText);
+        return this;
+    }
+    @Step("Выбор рейтинга")
+    public moviePage selectRating(String rating) {
+        ratingButton.scrollTo().click();
+        $x("//*[text() = '" + rating + "']/parent::*[@role]").click();
+        return this;
+    }
+    @Step("отправка отзыва")
+    public moviePage submitReview() {
+        submitReviewButton.click();
+        return this;
+    }
+    @Step("получаем текст отзыва")
+    public String getNewReviewText(String NewReview) {
+        reviewText.shouldBe(visible)
+                .shouldHave(text(NewReview));
+        return reviewText.getText();
+    }
+    @Step("удаление отзыва через меню")
+    public moviePage deleteReview() {
+    reviewMenuButton.click();
+        deleteReview.click();
+    return this;
+
+}
+    @Step("Получаем название фильма")
+    public String getFilmName() {
+        return nameFilm.getText();
+    }
+
+    @Step("Получаем имя жанра")
+    public String getGenreText() {
+        return genreFilm.getText();
+    }
+
+
+}
+
