@@ -70,8 +70,4 @@ public class TicketPage {
     public String confirmText () {
         return confrimPaymentText.getText();
     }
-
-
-
-
 }

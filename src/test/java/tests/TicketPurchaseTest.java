@@ -19,22 +19,28 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TicketPurchaseTest {
 
-    private static final AllMoviesPage filterPage = new AllMoviesPage();
-    private static final MoviePage reviewPage = new MoviePage();
-    private static final TicketPage ticketPage = new TicketPage();
+    private static final AllMoviesPage allMoviesPage  = new AllMoviesPage();
 
 @Test
 @DisplayName("Покупка билета")
     public void ticketBuy(){
-        filterPage.openMoviePage("Титаник");
-        reviewPage.buttonBuyTicket();
-        ticketPage.amountTicket("2");
-        ticketPage.setCardNumber("4242424242424242");
-        ticketPage.setCardName("John Doe");
-        ticketPage.setCardYear("2025");
-        ticketPage.setCardMonth("Декабрь");
-        ticketPage.setCardCVV("123");
-        ticketPage.buttonSucces();
+
+    MoviePage moviePage = allMoviesPage .findMovie(
+            "MSK",
+            "Драма",
+            "Старые",
+            "Титаник"
+    );
+
+    TicketPage ticketPage = moviePage.buttonBuyTicket();
+    ticketPage
+        .amountTicket("2")
+        .setCardNumber("4242424242424242")
+        .setCardName("John Doe")
+       .setCardYear("2025")
+       .setCardMonth("Декабрь")
+       .setCardCVV("123")
+       .buttonSucces();
 
     String succesPay = ticketPage.confirmText();
     Allure.step("Проверка текста оплаты", () -> {

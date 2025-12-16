@@ -22,9 +22,9 @@ public class MoviePage { ;
     private SelenideElement genreFilm = $("p[class$='mt-5']");
 
     @Step("покупка билета")
-    public MoviePage buttonBuyTicket () {
+    public TicketPage buttonBuyTicket () {
         buyTicket.click();
-        return this;
+        return new TicketPage();
     }
     @Step("текст отзыва")
     public MoviePage setTextReview(String ReviewText) {

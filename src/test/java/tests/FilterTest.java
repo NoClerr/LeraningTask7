@@ -6,9 +6,9 @@ import io.qameta.allure.Feature;
 import junit.UITest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pages.LoginPage;
 import pages.AllMoviesPage;
 import pages.MoviePage;
+
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -18,24 +18,24 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class FilterTest {
 
     private static final AllMoviesPage filterPage = new AllMoviesPage();
-    private static final MoviePage reviewPage = new MoviePage();
 
     @Test
     @DisplayName("Фильтры на странице с фильмами")
     public void FiltersTest() {
-        filterPage.open()
-                .setMoviesLocation("MSK")
-                .setGenre("Драма")
-                .setMoviesFilter("Старые")
-                .openMoviePage("Титаник");
+        MoviePage moviePage = filterPage.findMovie(
+                "MSK",
+                "Драма",
+                "Старые",
+                "Титаник"
+        );
 
-        String actualFilm = reviewPage.getFilmName();
+        String actualFilm = moviePage.getFilmName();
         Allure.step("Проверка что название фильма соответствует выбранному", () -> {
             assertThat(actualFilm).contains("Титаник");
         });
 
 
-        String actualGenre = reviewPage.getGenreText();
+        String actualGenre = moviePage.getGenreText();
         Allure.step("Проверка что жанр фильма соответствует выбранному", () -> {
             assertThat(actualGenre).contains("Драма");
         });

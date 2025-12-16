@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -15,10 +16,11 @@ public class AllMoviesPage {
     private SelenideElement moviesFilter = $x("//button[.//span[@data-qa-id='movies_filter_created_at_select']]");
     private SelenideElement loginPage = $("[class='login_page_button']");
     private SelenideElement filterPage = $(byText("Все фильмы"));
+    private SelenideElement profileButton = $("[data-qa-id='profile_page_button']");
 
     @Step("Открыть главную страницу")
     public AllMoviesPage open() {
-        Selenide.open("/movies?page=1");
+        filterPage.click();
         return this;
     }
 
@@ -43,8 +45,16 @@ public class AllMoviesPage {
     }
 
     @Step("Выбор фильма")
-    public AllMoviesPage openMoviePage (String movieName){
+    public MoviePage openMoviePage (String movieName){
         $x("//h3[text()='" + movieName + "']").click();
-        return new AllMoviesPage();
+        return new MoviePage();
+    }
+    @Step ("Ищем фильм по фильтрам")
+    public MoviePage findMovie (String city,String genre, String createdAtFilter, String movieName) {
+        open();
+        setMoviesLocation(city);
+        setGenre(genre);
+        setMoviesFilter(createdAtFilter);
+        return openMoviePage(movieName);
     }
 }

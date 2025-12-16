@@ -13,6 +13,7 @@ public class LoginPage {
     private final SelenideElement passwordField = $("[data-qa-id='login_password_input']");
     private final SelenideElement loginButton = $("[data-qa-id='login_submit_button']");
     private final SelenideElement loginPageButton = $("[data-qa-id='login_page_button']");
+    private final SelenideElement userMenuButton = $("[data-qa-id='profile_page_button']");
 
     @Step("Открываем страницу авторизации")
     public LoginPage open() {
@@ -33,9 +34,9 @@ public class LoginPage {
     }
 
     @Step("Кликаем по кнопке вход")
-    public AllMoviesPage clickLogin() {
+    public LoginPage clickLogin() {
         loginButton.shouldBe(visible).click();
-        return new AllMoviesPage();
+        return this;
     }
     public LoginPage loginAs(String email, String password) {
         open();
