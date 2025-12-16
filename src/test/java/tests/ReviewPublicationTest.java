@@ -4,11 +4,14 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import junit.UITest;
+import movieapi.api.steps.ReviewApiSteps;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.AllMoviesPage;
-import pages.moviePage;
+import pages.MoviePage;
+
+
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -20,7 +23,17 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class ReviewPublicationTest {
 
     private static final AllMoviesPage filterPage = new AllMoviesPage();
-    private static final moviePage reviewPage = new moviePage();
+    private final ReviewApiSteps reviewApiSteps = new ReviewApiSteps();
+    private MoviePage moviePage;
+    private Long movieId = 56L;
+
+    @AfterEach
+    void cleanup() {
+        if (movieId != null) {
+            reviewApiSteps.deleteReviewForMovie(movieId);
+        }
+    }
+
 
     @Test
     @DisplayName("Публикация отзыва")
@@ -28,22 +41,22 @@ public class ReviewPublicationTest {
         String textReview = "Отзыв на фильм";
         String rating = "4";
 
-            filterPage.openMoviePage("Титаник");
-            reviewPage.textReview(textReview);
-            reviewPage.selectRating(rating);
-            reviewPage.submitReview();
+        moviePage = filterPage.findMovie(
+                "MSK",
+                "Драма",
+                "Старые",
+                "Титаник"
+        );
+        moviePage
+                .setTextReview(textReview)
+                .setMovieRating(rating)
+                .submitReview();
 
 
-            String actualTextReview = reviewPage.getNewReviewText(textReview);
-            Allure.step("Проверка текста отзыва", () -> {
-                assertThat(actualTextReview).isEqualTo(textReview);
-            });
+        String actualTextReview = moviePage.getNewReviewText(textReview);
+        Allure.step("Проверка текста отзыва", () -> {
+            assertThat(actualTextReview).isEqualTo(textReview);
+        });
 
-        }
-    @AfterEach
-    public void deleteReview(){
-        reviewPage.deleteReview();
-        }
     }
-
-
+}

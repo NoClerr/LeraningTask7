@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class moviePage { ;
+public class MoviePage { ;
     private SelenideElement buyTicket = $(byText("Купить билет"));
     private SelenideElement reviewTextarea = $("[data-qa-id='movie_review_input']");
     private SelenideElement ratingButton = $("button[dir='ltr']");
@@ -22,23 +22,23 @@ public class moviePage { ;
     private SelenideElement genreFilm = $("p[class$='mt-5']");
 
     @Step("покупка билета")
-    public moviePage buttonBuyTicket () {
+    public TicketPage buttonBuyTicket () {
         buyTicket.click();
-        return this;
+        return new TicketPage();
     }
     @Step("текст отзыва")
-    public moviePage textReview (String ReviewText) {
+    public MoviePage setTextReview(String ReviewText) {
         reviewTextarea.setValue(ReviewText);
         return this;
     }
     @Step("Выбор рейтинга")
-    public moviePage selectRating(String rating) {
+    public MoviePage setMovieRating(String rating) {
         ratingButton.scrollTo().click();
         $x("//*[text() = '" + rating + "']/parent::*[@role]").click();
         return this;
     }
     @Step("отправка отзыва")
-    public moviePage submitReview() {
+    public MoviePage submitReview() {
         submitReviewButton.click();
         return this;
     }
@@ -49,7 +49,7 @@ public class moviePage { ;
         return reviewText.getText();
     }
     @Step("удаление отзыва через меню")
-    public moviePage deleteReview() {
+    public MoviePage deleteReview() {
     reviewMenuButton.click();
         deleteReview.click();
     return this;
