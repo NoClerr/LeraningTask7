@@ -28,7 +28,12 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+
+    useJUnitPlatform(){
+        if (project.hasProperty("tags")) {
+            includeTags(project.property("tags") as String)
+        }
+    }
     maxParallelForks = Runtime.runtime.availableProcessors() / 2
     systemProperties = systemProperties = [
             'selenide.browser': 'chrome',
