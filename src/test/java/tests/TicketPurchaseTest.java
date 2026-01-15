@@ -37,7 +37,7 @@ public class TicketPurchaseTest {
         .amountTicket("2")
         .setCardNumber("4242424242424242")
         .setCardName("John Doe")
-       .setCardYear("2025")
+       .setCardYear("2026")
        .setCardMonth("Декабрь")
        .setCardCVV("123")
        .buttonSucces();
