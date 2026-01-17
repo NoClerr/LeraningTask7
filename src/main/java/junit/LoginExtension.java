@@ -8,6 +8,7 @@ public class LoginExtension implements BeforeEachCallback {
 
     @Override
     public void beforeEach(ExtensionContext context) {
+        SelenoidConfig.setup();
         AuthService.loginDefaultUser();
     }
 }
