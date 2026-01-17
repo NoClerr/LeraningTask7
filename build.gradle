@@ -34,7 +34,7 @@ test {
             includeTags(project.property("tags") as String)
         }
     }
-    maxParallelForks = Runtime.runtime.availableProcessors() / 2
+    maxParallelForks = 1
     systemProperties = systemProperties = [
             'selenide.browser': 'chrome',
     ]
