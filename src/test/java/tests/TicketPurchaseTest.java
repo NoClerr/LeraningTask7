@@ -29,7 +29,7 @@ public class TicketPurchaseTest {
             "MSK",
             "Драма",
             "Старые",
-            "Титаник"
+            "Король Лев"
     );
 
     TicketPage ticketPage = moviePage.buttonBuyTicket();
