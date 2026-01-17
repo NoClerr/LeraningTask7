@@ -26,12 +26,12 @@ public class FilterTest {
                 "MSK",
                 "Драма",
                 "Старые",
-                "Титаник"
+                "Король Лев"
         );
 
         String actualFilm = moviePage.getFilmName();
         Allure.step("Проверка что название фильма соответствует выбранному", () -> {
-            assertThat(actualFilm).contains("Титаник");
+            assertThat(actualFilm).contains("Король Лев");
         });
 
 

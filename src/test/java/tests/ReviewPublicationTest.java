@@ -45,7 +45,7 @@ public class ReviewPublicationTest {
                 "MSK",
                 "Драма",
                 "Старые",
-                "Титаник"
+                "Король Лев"
         );
         moviePage
                 .setTextReview(textReview)
